@@ -1,0 +1,64 @@
+<app-content>
+    <div class="container">
+        <div class="col-md-10 " style="margin: 0 auto;widows: 100px;">
+          <div class="row">
+            <div class="col-xl-12">
+              <div class="card spur-card">
+                <div class="card-header text-center">
+                  <div class="spur-card-icon">
+                    <div class="spur-card-title">
+                      <i class="fab fa-bitcoin"></i> เพิ่มรายการหนังสือ
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body ">
+                  <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+                    <div class="form-row col-md-12">
+                        <div class="form-group col-md-6">
+                            <label>รหัสหนังสือ</label>
+                            <input type="text" class="form-control" formControlName="bookId" [ngClass]="{ 'is-invalid': submitted && validate.bookId.errors }">
+                            <div *ngIf="submitted && validate.bookId.errors" class="invalid-feedback">
+                              <div *ngIf="validate.bookId.errors.required">กรุณากรอกข้อมูล</div>
+                            </div>
+                          </div>
+                          <div class="form-group col-md-6" >
+                              <label>ประเภทหนังสือ</label>
+                              <select class="form-control" formControlName="bookcatId" >
+                                <option value="{{item.catId}}" *ngFor="let item of catList">{{item.catName}}</option>
+                              </select>
+                             
+                            </div>
+                          <div class="form-group col-md-12">
+                            <label>ชื่อหนังสือ</label>
+                            <input type="text" class="form-control" formControlName="bookName" [ngClass]="{ 'is-invalid': submitted && validate.bookName.errors }">
+                            <div *ngIf="submitted && validate.bookName.errors" class="invalid-feedback">
+                              <div *ngIf="validate.bookName.errors.required">กรุณากรอกข้อมูล</div>
+                            </div>
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label>จำนวนหนังสือ</label>
+                            <input type="number" class="form-control" formControlName="bookAmount" [ngClass]="{ 'is-invalid': submitted && validate.bookAmount.errors }">
+                            <div *ngIf="submitted && validate.bookAmount.errors" class="invalid-feedback">
+                              <div *ngIf="validate.bookAmount.errors.required">กรุณากรอกข้อมูล</div>
+                            </div>
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label>วันที่เพิ่มรายการ</label>
+                            <input type="date" class="form-control" formControlName="bookdate" [ngClass]="{ 'is-invalid': submitted && validate.bookdate.errors }">
+                            <div *ngIf="submitted && validate.bookdate.errors" class="invalid-feedback">
+                              <div *ngIf="validate.bookdate.errors.required">กรุณากรอกข้อมูล</div>
+                            </div>
+                          </div>
+                          
+                          <div class="text-center">
+                            <button type="submit" class="btn btn-primary">บันทึก</button>
+                          </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</app-content>
